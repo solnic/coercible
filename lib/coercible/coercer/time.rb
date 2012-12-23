@@ -3,7 +3,7 @@ module Coercible
 
     # Coerce Time values
     class Time < Object
-      extend TimeCoercions
+      include TimeCoercions
 
       primitive ::Time
 
