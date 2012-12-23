@@ -3,8 +3,7 @@ module Coercible
 
     # Coerce Fixnum values
     class Integer < Numeric
-      # TODO: switch it back to Integer
-      primitive ::Fixnum
+      primitive ::Integer
 
       attr_reader :boolean_map
 

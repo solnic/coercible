@@ -10,6 +10,7 @@ require 'set'
 
 require 'descendants_tracker'
 require 'support/options'
+require 'support/type_lookup'
 
 require 'coercible/version'
 

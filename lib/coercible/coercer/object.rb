@@ -3,7 +3,7 @@ module Coercible
 
     # Coerce Object values
     class Object
-      extend DescendantsTracker, Options
+      extend DescendantsTracker, TypeLookup, Options
 
       accept_options :primitive
 
@@ -13,7 +13,7 @@ module Coercible
 
       attr_reader :coercers
 
-      def initialize(coercers = Coercer.new.coercers)
+      def initialize(coercers = Coercer.new)
         @coercers = coercers
       end
 
