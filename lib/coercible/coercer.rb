@@ -25,7 +25,7 @@ module Coercible
 
     # @api private
     def initialize_coercer(klass)
-      coercers[klass] = Coercer::Object.determine_type(klass).new(self)
+      coercers[klass] = (Coercer::Object.determine_type(klass) || Coercer::Object).new(self)
     end
 
     # @api private
