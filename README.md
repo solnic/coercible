@@ -20,7 +20,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+``` ruby
+# build coercer instance
+coercer = Coercible::Coercer.new do |config|
+  config.string.boolean_map = { 'yup' => true, 'nope' => false }
+end
+
+# coerce a string to boolean
+coercer[String].to_boolean('yup') # => true
+coercer[String].to_boolean('nope') # => false
+```
 
 ## Contributing
 
