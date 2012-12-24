@@ -7,7 +7,7 @@ describe Coercer, '.new' do
 
   it { should be_instance_of(Coercer) }
 
-  its(:config) { should be_instance_of(Configuration) }
+  its(:config) { should be_instance_of(Coercible::Configuration) }
   its(:config) { should respond_to(:string) }
   its(:config) { should respond_to(:string=) }
 end
