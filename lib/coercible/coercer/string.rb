@@ -18,6 +18,27 @@ module Coercible
         #{FRACTIONAL_REGEXP}#{EXPONENT_REGEXP}?
       )\z/x.freeze
 
+      # @api private
+      def self.config
+        Configuration.build([ :boolean_map ]) { |config|
+          config.boolean_map = BOOLEAN_MAP
+        }
+      end
+
+      # @api private
+      def self.config_key
+        :string
+      end
+
+      # @api private
+      attr_reader :boolean_map
+
+      # @api private
+      def initialize(coercer = Coercer.new, config = self.class.config)
+        super
+        @boolean_map = config.boolean_map
+      end
+
       # Coerce give value to a constant
       #
       # @example
@@ -104,7 +125,7 @@ module Coercible
       #
       # @api public
       def to_boolean(value)
-        BOOLEAN_MAP.fetch(value.downcase, value)
+        boolean_map.fetch(value.downcase)
       end
 
       # Coerce value to integer

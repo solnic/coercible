@@ -24,6 +24,8 @@ describe Coercer::String, '.to_boolean' do
   context 'with an invalid boolean string' do
     let(:string) { 'non-boolean' }
 
-    it { should equal(string) }
+    specify do
+      expect { subject }.to raise_error
+    end
   end
 end

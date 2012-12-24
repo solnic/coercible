@@ -13,7 +13,7 @@ module Coercible
 
       attr_reader :coercers
 
-      def initialize(coercers = Coercer.new)
+      def initialize(coercers = Coercer.new, config = nil)
         @coercers = coercers
       end
 

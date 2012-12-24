@@ -5,12 +5,7 @@ module Coercible
     class Integer < Numeric
       primitive ::Integer
 
-      attr_reader :boolean_map
-
-      def initialize(*)
-        super
-        @boolean_map = { 0 => false, 1 => true }
-      end
+      BOOLEAN_MAP = { 0 => false, 1 => true }.freeze
 
       # Coerce given value to String
       #
@@ -54,7 +49,7 @@ module Coercible
       #
       # @api public
       def to_boolean(value)
-        boolean_map.fetch(value) { raise(ArgumentError) }
+        BOOLEAN_MAP.fetch(value) { raise(ArgumentError) }
       end
 
       # Coerce given value to a DateTime

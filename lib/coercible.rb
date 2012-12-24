@@ -14,6 +14,7 @@ require 'support/options'
 require 'support/type_lookup'
 
 require 'coercible/version'
+require 'coercible/configuration'
 
 require 'coercible/coercer'
 require 'coercible/coercer/object'
