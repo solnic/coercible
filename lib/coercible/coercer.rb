@@ -1,13 +1,42 @@
 module Coercible
 
+  # Coercer object
+  #
+  #
+  # @example
+  #
+  #   coercer = Coercible::Coercer.new
+  #
+  #   coercer[String].to_boolean('yes') # => true
+  #   coercer[Integer].to_string(1)     # => '1'
+  #
+  # @api public
   class Coercer
 
+    # Return coercer instances
+    #
+    # @return [Array<Coercer::Object>]
+    #
     # @api private
     attr_reader :coercers
 
+    # Returns global configuration for coercers
+    #
+    # @return [Configuration]
+    #
     # @api private
     attr_reader :config
 
+    # Build a new coercer
+    #
+    # @example
+    #
+    #   Coercible::Coercer.new { |config| # set configuration }
+    #
+    # @yieldparam [Configuration]
+    #
+    # @return [Coercer]
+    #
     # @api public
     def self.new(&block)
       configuration = Configuration.build(config_keys)
@@ -21,12 +50,20 @@ module Coercible
       super({}, configuration)
     end
 
+    # Return configuration keys for Coercer instance
+    #
+    # @return [Array<Symbol>]
+    #
     # @api private
     def self.config_keys
       configurable_coercers.map(&:config_name)
     end
     private_class_method :config_keys
 
+    # Return coercer classes that are configurable
+    #
+    # @return [Array<Class>]
+    #
     # @api private
     def self.configurable_coercers(&block)
       Coercer::Object.descendants.select { |descendant|
@@ -35,6 +72,14 @@ module Coercible
     end
     private_class_method :configurable_coercers
 
+    # Initialize a new coercer instance
+    #
+    # @param [Hash] coercers
+    #
+    # @param [Configuration] config
+    #
+    # @return [undefined]
+    #
     # @api private
     def initialize(coercers = {}, config = nil)
       @coercers = coercers
@@ -42,6 +87,17 @@ module Coercible
       initialize_default_coercer
     end
 
+    # Access a specific coercer object for the given type
+    #
+    # @example
+    #
+    #   coercer[String] # => string coercer
+    #   coercer[Integer] # => integer coercer
+    #
+    # @param [Class] type
+    #
+    # @return [Coercer::Object]
+    #
     # @api public
     def [](klass)
       fetch(klass) || coercers[::Object]
@@ -49,11 +105,22 @@ module Coercible
 
     private
 
+    # Fetch an existing coercer or create a new instance
+    #
+    # @return [Coercer::Object]
+    #
     # @api private
     def fetch(klass)
       coercers[klass] || initialize_coercer(klass)
     end
 
+    # Initialize a new coercer instance for the give type
+    #
+    # If a coercer class supports configuration it will receive it from the
+    # global configuration object
+    #
+    # @return [Coercer::Object]
+    #
     # @api private
     def initialize_coercer(klass)
       coercers[klass] =
@@ -65,11 +132,19 @@ module Coercible
         end
     end
 
+    # Initialize default coercer object
+    #
+    # @return [Coercer::Object]
+    #
     # @api private
     def initialize_default_coercer
       coercers[::Object] = Coercer::Object.new(self)
     end
 
+    # Find configuration for the given coercer type
+    #
+    # @return [Configuration]
+    #
     # @api private
     def config_for(coercer)
       config.send(coercer.config_name)
