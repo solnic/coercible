@@ -17,6 +17,7 @@ require 'coercible/version'
 require 'coercible/configuration'
 
 require 'coercible/coercer'
+require 'coercible/coercer/configurable'
 require 'coercible/coercer/object'
 
 require 'coercible/coercer/numeric'

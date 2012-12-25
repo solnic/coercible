@@ -3,7 +3,11 @@ module Coercible
 
     # Coerce String values
     class String < Object
+      extend Configurable
+
       primitive ::String
+
+      config_keys [ :boolean_map ]
 
       TRUE_VALUES  = %w[ 1 on  t true  y yes ].freeze
       FALSE_VALUES = %w[ 0 off f false n no  ].freeze
@@ -20,14 +24,7 @@ module Coercible
 
       # @api private
       def self.config
-        Configuration.build([ :boolean_map ]) { |config|
-          config.boolean_map = BOOLEAN_MAP
-        }
-      end
-
-      # @api private
-      def self.config_key
-        :string
+        super { |config| config.boolean_map = BOOLEAN_MAP }
       end
 
       # @api private
@@ -35,7 +32,7 @@ module Coercible
 
       # @api private
       def initialize(coercer = Coercer.new, config = self.class.config)
-        super
+        super(coercer)
         @boolean_map = config.boolean_map
       end
 

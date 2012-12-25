@@ -3,16 +3,20 @@ module Coercible
 
     # Coerce Fixnum values
     class Integer < Numeric
+      extend Configurable
+
       primitive ::Integer
+
+      config_keys [ :datetime_format, :datetime_proc ]
 
       BOOLEAN_MAP = { 0 => false, 1 => true }.freeze
 
-      # @api private
+      # @api public
       def self.config
+        # FIXME: Remove after Rubinius 2.0 is released
         is_rbx = defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
 
-        # FIXME: Remove after Rubinius 2.0 is released
-        Configuration.build([ :datetime_format, :datetime_proc ]) do |config|
+        super do |config|
           config.datetime_format = is_rbx ? '%Q' : '%s'
 
           config.datetime_proc   = is_rbx ?
@@ -21,15 +25,10 @@ module Coercible
       end
 
       # @api private
-      def self.config_key
-        :integer
-      end
-
-      # @api private
       attr_reader :datetime_format, :datetime_proc
 
       def initialize(coercer = Coercer.new, config = self.class.config)
-        super
+        super(coercer)
         @datetime_format = config.datetime_format
         @datetime_proc   = config.datetime_proc
       end

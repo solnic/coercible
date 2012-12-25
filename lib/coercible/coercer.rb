@@ -13,7 +13,7 @@ module Coercible
       configuration = Configuration.build(config_keys)
 
       configurable_coercers.each do |coercer|
-        configuration.send("#{coercer.config_key}=", coercer.config)
+        configuration.send("#{coercer.config_name}=", coercer.config)
       end
 
       yield(configuration) if block_given?
@@ -23,7 +23,7 @@ module Coercible
 
     # @api private
     def self.config_keys
-      configurable_coercers.map(&:config_key)
+      configurable_coercers.map(&:config_name)
     end
     private_class_method :config_keys
 
@@ -59,7 +59,9 @@ module Coercible
       coercers[klass] =
         begin
           coercer = Coercer::Object.determine_type(klass) || Coercer::Object
-          coercer.new(self, config_for(coercer))
+          args    = [ self ]
+          args   << config_for(coercer) if coercer.respond_to?(:config_name)
+          coercer.new(*args)
         end
     end
 
@@ -70,7 +72,7 @@ module Coercible
 
     # @api private
     def config_for(coercer)
-      config.send(coercer.config_key) if coercer.respond_to?(:config_key)
+      config.send(coercer.config_name)
     end
 
   end # class Coercer
