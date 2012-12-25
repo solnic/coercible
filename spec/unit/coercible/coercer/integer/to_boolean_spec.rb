@@ -21,7 +21,7 @@ describe Coercer::Integer, '.to_boolean' do
     let(:fixnum) { -1 }
 
     specify do
-      expect { subject }.to raise_error(ArgumentError)
+      expect { subject }.to raise_error(UnsupportedCoercion)
     end
   end
 end

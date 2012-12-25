@@ -18,6 +18,8 @@ describe Coercer::String, '.to_date' do
   context 'with an invalid date string' do
     let(:string) { 'non-date' }
 
-    it { should equal(string) }
+    specify do
+      expect { subject }.to raise_error(UnsupportedCoercion)
+    end
   end
 end

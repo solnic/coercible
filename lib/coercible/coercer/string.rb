@@ -77,7 +77,7 @@ module Coercible
       #
       # @api public
       def to_time(value)
-        parse_value(::Time, value)
+        parse_value(::Time, value, __method__)
       end
 
       # Coerce given value to Date
@@ -91,7 +91,7 @@ module Coercible
       #
       # @api public
       def to_date(value)
-        parse_value(::Date, value)
+        parse_value(::Date, value, __method__)
       end
 
       # Coerce given value to DateTime
@@ -105,7 +105,7 @@ module Coercible
       #
       # @api public
       def to_datetime(value)
-        parse_value(::DateTime, value)
+        parse_value(::DateTime, value, __method__)
       end
 
       # Coerce value to TrueClass or FalseClass
@@ -122,7 +122,9 @@ module Coercible
       #
       # @api public
       def to_boolean(value)
-        boolean_map.fetch(value.downcase)
+        boolean_map.fetch(value.downcase) {
+          raise_unsupported_coercion(value, __method__)
+        }
       end
 
       # Coerce value to integer
@@ -221,10 +223,10 @@ module Coercible
       # @return [Time]
       #
       # @api private
-      def parse_value(parser, value)
+      def parse_value(parser, value, method)
         parser.parse(value)
       rescue ArgumentError
-        return value
+        raise_unsupported_coercion(value, method)
       end
 
     end # class String

@@ -45,6 +45,8 @@ describe Coercer::String, '.to_time' do
   context 'with an invalid date time string' do
     let(:string) { '2999' }
 
-    it { should equal(string) }
+    specify do
+      expect { subject }.to raise_error(UnsupportedCoercion)
+    end
   end
 end

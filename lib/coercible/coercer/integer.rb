@@ -76,7 +76,9 @@ module Coercible
       #
       # @api public
       def to_boolean(value)
-        boolean_map.fetch(value) { raise(ArgumentError) }
+        boolean_map.fetch(value) {
+          raise_unsupported_coercion(value, __method__)
+        }
       end
 
       # Coerce given value to a DateTime

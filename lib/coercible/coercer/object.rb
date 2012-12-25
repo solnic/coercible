@@ -101,6 +101,14 @@ module Coercible
 
       private
 
+      # @api private
+      def raise_unsupported_coercion(value, method)
+        raise(
+          UnsupportedCoercion,
+          "#{self.class}##{method} doesn't know how to coerce #{value.inspect}"
+        )
+      end
+
       # Passthrough given value
       #
       # @param [Object] value

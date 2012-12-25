@@ -1,5 +1,7 @@
 module Coercible
   EXTRA_CONST_ARGS = (RUBY_VERSION < '1.9' ? [] : [ false ]).freeze
+
+  UnsupportedCoercion = Class.new(StandardError)
 end
 
 require 'date'
