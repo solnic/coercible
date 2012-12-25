@@ -10,7 +10,7 @@ module Coercible
       # Passthrough the value
       #
       # @example
-      #   Coercible::Coercion::DateTime.to_date(date)  # => Date object
+      #   coercer[DateTime].to_date(date)  # => Date object
       #
       # @param [DateTime] value
       #

@@ -7,7 +7,7 @@ module Coercible
       # Coerce given value to String
       #
       # @example
-      #   Coercible::Coercion::Time.to_string(time)  # => "Wed Jul 20 10:30:41 -0700 2011"
+      #   coercer[Time].to_string(time)  # => "Wed Jul 20 10:30:41 -0700 2011"
       #
       # @param [Date,Time,DateTime] value
       #
@@ -21,7 +21,7 @@ module Coercible
       # Coerce given value to Time
       #
       # @example
-      #   Coercible::Coercion::DateTime.to_time(datetime)  # => Time object
+      #   coercer[DateTime].to_time(datetime)  # => Time object
       #
       # @param [Date,DateTime] value
       #
@@ -35,7 +35,7 @@ module Coercible
       # Coerce given value to DateTime
       #
       # @example
-      #   Coercible::Coercion::Time.to_datetime(time)  # => DateTime object
+      #   coercer[Time].to_datetime(time)  # => DateTime object
       #
       # @param [Date,Time] value
       #
@@ -49,7 +49,7 @@ module Coercible
       # Coerce given value to Date
       #
       # @example
-      #   Coercible::Coercion::Time.to_date(time)  # => Date object
+      #   coercer[Time].to_date(time)  # => Date object
       #
       # @param [Time,DateTime] value
       #

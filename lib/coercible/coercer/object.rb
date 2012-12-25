@@ -11,8 +11,19 @@ module Coercible
 
       COERCION_METHOD_REGEXP = /\Ato_/.freeze
 
+      # Return coercers object
+      #
+      # @return [Coercer]
+      #
+      # @api private
       attr_reader :coercers
 
+      # Initialize a new coercer instance
+      #
+      # @param [Coercer] coercers
+      #
+      # @return [undefined]
+      #
       # @api private
       def initialize(coercers = Coercer.new)
         @coercers = coercers
@@ -21,13 +32,13 @@ module Coercible
       # Create an Array from any Object
       #
       # @example with an object that does not respond to #to_a or #to_ary
-      #   Coercible::Coercion::Object.to_array(value)         # => [ value ]
+      #   coercer[Object].to_array(value)         # => [ value ]
       #
       # @example with an object that responds to #to_a
-      #   Coercible::Coercion::Object.to_array(Set[ value ])  # => [ value ]
+      #   coercer[Object].to_array(Set[ value ])  # => [ value ]
       #
       # @example with n object that responds to #to_ary
-      #   Coercible::Coercion::Object.to_array([ value ])     # => [ value ]
+      #   coercer[Object].to_array([ value ])     # => [ value ]
       #
       # @param [#to_a,#to_ary,Object] value
       # @param [#to_a,#to_ary,Object] value
@@ -42,10 +53,10 @@ module Coercible
       # Create a Hash from the Object if possible
       #
       # @example with a coercible object
-      #   Coercible::Coercion::Object.to_hash(key => value)  # => { key => value }
+      #   coercer[Object].to_hash(key => value)  # => { key => value }
       #
       # @example with an object that is not coercible
-      #   Coercible::Coercion::Object.to_hash(value)  # => value
+      #   coercer[Object].to_hash(value)  # => value
       #
       # @param [#to_hash, Object] value
       #
@@ -62,10 +73,10 @@ module Coercible
       # Create a String from the Object if possible
       #
       # @example with a coercible object
-      #   Coercible::Coercion::Object.to_string("string")  # => "string"
+      #   coercer[Object].to_string("string")  # => "string"
       #
       # @example with an object that is not coercible
-      #   Coercible::Coercion::Object.to_string(value)  # => value
+      #   coercer[Object].to_string(value)  # => value
       #
       # @param [#to_str, Object] value
       #
@@ -82,10 +93,10 @@ module Coercible
       # Create an Integer from the Object if possible
       #
       # @example with a coercible object
-      #   Coercible::Coercion::Object.to_integer(1)  # => 1
+      #   coercer[Object].to_integer(1)  # => 1
       #
       # @example with an object that is not coercible
-      #   Coercible::Coercion::Object.to_integer(value)  # => value
+      #   coercer[Object].to_integer(value)  # => value
       #
       # @param [#to_int, Object] value
       #
@@ -101,6 +112,12 @@ module Coercible
 
       private
 
+      # Raise an unsupported coercion error
+      #
+      # @raises [UnsupportedCoercion]
+      #
+      # @return [undefined]
+      #
       # @api private
       def raise_unsupported_coercion(value, method)
         raise(

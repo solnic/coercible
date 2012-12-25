@@ -8,7 +8,7 @@ module Coercible
       # Coerce given value to String
       #
       # @example
-      #   Coercible::Coercion::Numeric.to_string(Rational(2, 2))  # => "1.0"
+      #   coercer[Numeric].to_string(Rational(2, 2))  # => "1.0"
       #
       # @param [Numeric] value
       #
@@ -22,7 +22,7 @@ module Coercible
       # Creates an Integer instance from a numeric object
       #
       # @example
-      #   Coercible::Coercion::Numeric.to_integer(Rational(2, 2))  # => 1
+      #   coercer[Numeric].to_integer(Rational(2, 2))  # => 1
       #
       # @param [Numeric] value
       #
@@ -36,7 +36,7 @@ module Coercible
       # Creates a Float instance from a numeric object
       #
       # @example
-      #   Coercible::Coercion::Numeric.to_float(Rational(2, 2))  # => 1.0
+      #   coercer[Numeric].to_float(Rational(2, 2))  # => 1.0
       #
       # @param [Numeric] value
       #
@@ -50,7 +50,7 @@ module Coercible
       # Coerce a BigDecimal instance from a numeric object
       #
       # @example
-      #   Coercible::Coercion::Numeric.to_decimal(Rational(2, 2))  # => BigDecimal('1.0')
+      #   coercer[Numeric].to_decimal(Rational(2, 2))  # => BigDecimal('1.0')
       #
       # @param [Numeric] value
       #

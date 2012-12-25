@@ -44,19 +44,23 @@ module Coercible
       raise NotImplementedError, "#{self}.primitive must be implemented"
     end
 
-  private
+    private
 
+    # Determine type and cache the class
+    #
+    # @return [Class]
+    #
     # @api private
-  def determine_type_and_cache(class_or_name)
-    case class_or_name
-    when singleton_class
-      determine_type_from_descendant(class_or_name)
-    when Class
-      determine_type_from_primitive(class_or_name)
-    else
-      determine_type_from_string(class_or_name.to_s)
+    def determine_type_and_cache(class_or_name)
+      case class_or_name
+      when singleton_class
+        determine_type_from_descendant(class_or_name)
+      when Class
+        determine_type_from_primitive(class_or_name)
+      else
+        determine_type_from_string(class_or_name.to_s)
+      end
     end
-  end
 
     # Return the class given a descendant
     #

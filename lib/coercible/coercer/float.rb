@@ -8,7 +8,7 @@ module Coercible
       # Passthrough the value
       #
       # @example
-      #   Coercible::Coercion::Float.to_float(1.0)  # => 1.0
+      #   coercer[Float].to_float(1.0)  # => 1.0
       #
       # @param [Float] value
       #

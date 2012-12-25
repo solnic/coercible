@@ -8,7 +8,7 @@ module Coercible
       # Coerce given value to String
       #
       # @example
-      #   Coercible::Coercion::Symbol.to_string(:name)  # => "name"
+      #   coercer[Symbol].to_string(:name)  # => "name"
       #
       # @param [Symbol] value
       #

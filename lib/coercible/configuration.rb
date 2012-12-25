@@ -1,7 +1,15 @@
 module Coercible
 
+  # Configuration object for global and per coercer type settings
+  #
   class Configuration
 
+    # Build a configuration instance
+    #
+    # @param [Array] list of accessor keys
+    #
+    # @return [Configuration]
+    #
     # @api private
     def self.build(keys, &block)
       config = new
@@ -20,5 +28,6 @@ module Coercible
       config
     end
 
-  end
+  end # class Configuration
+
 end # module Coercible

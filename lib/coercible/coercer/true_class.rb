@@ -8,7 +8,7 @@ module Coercible
       # Coerce given value to String
       #
       # @example
-      #   Coercible::Coercion::TrueClass.to_string(true)  # => "true"
+      #   coercer[TrueClass].to_string(true)  # => "true"
       #
       # @param [TrueClass] value
       #

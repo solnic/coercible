@@ -22,14 +22,30 @@ module Coercible
         #{FRACTIONAL_REGEXP}#{EXPONENT_REGEXP}?
       )\z/x.freeze
 
+      # Return default configuration for string coercer type
+      #
+      # @return [Configuration]
+      #
       # @api private
       def self.config
         super { |config| config.boolean_map = BOOLEAN_MAP }
       end
 
+      # Return boolean map from the config
+      #
+      # @return [::Hash]
+      #
       # @api private
       attr_reader :boolean_map
 
+      # Initialize a new string coercer instance
+      #
+      # @param [Coercer]
+      #
+      # @param [Configuration]
+      #
+      # @return [undefined]
+      #
       # @api private
       def initialize(coercer = Coercer.new, config = self.class.config)
         super(coercer)
@@ -39,7 +55,7 @@ module Coercible
       # Coerce give value to a constant
       #
       # @example
-      #   Coercible::Coercion::String.to_constant('String') # => String
+      #   coercer[String].to_constant('String') # => String
       #
       # @param [String] value
       #
@@ -55,7 +71,7 @@ module Coercible
       # Coerce give value to a symbol
       #
       # @example
-      #   Coercible::Coercion::String.to_symbol('string') # => :string
+      #   coercer[String].to_symbol('string') # => :string
       #
       # @param [String] value
       #
@@ -69,7 +85,7 @@ module Coercible
       # Coerce given value to Time
       #
       # @example
-      #   Coercible::Coercion::String.to_time(string)  # => Time object
+      #   coercer[String].to_time(string)  # => Time object
       #
       # @param [String] value
       #
@@ -83,7 +99,7 @@ module Coercible
       # Coerce given value to Date
       #
       # @example
-      #   Coercible::Coercion::String.to_date(string)  # => Date object
+      #   coercer[String].to_date(string)  # => Date object
       #
       # @param [String] value
       #
@@ -97,7 +113,7 @@ module Coercible
       # Coerce given value to DateTime
       #
       # @example
-      #   Coercible::Coercion::String.to_datetime(string)  # => DateTime object
+      #   coercer[String].to_datetime(string)  # => DateTime object
       #
       # @param [String] value
       #
@@ -111,10 +127,10 @@ module Coercible
       # Coerce value to TrueClass or FalseClass
       #
       # @example with "T"
-      #   Coercible::Coercion::String.to_boolean('T')  # => true
+      #   coercer[String].to_boolean('T')  # => true
       #
       # @example with "F"
-      #   Coercible::Coercion::String.to_boolean('F')  # => false
+      #   coercer[String].to_boolean('F')  # => false
       #
       # @param [#to_s]
       #
@@ -130,7 +146,7 @@ module Coercible
       # Coerce value to integer
       #
       # @example
-      #   Coercible::Coercion::String.to_integer('1')  # => 1
+      #   coercer[String].to_integer('1')  # => 1
       #
       # @param [Object] value
       #
@@ -151,7 +167,7 @@ module Coercible
       # Coerce value to float
       #
       # @example
-      #   Coercible::Coercion::String.to_float('1.2')  # => 1.2
+      #   coercer[String].to_float('1.2')  # => 1.2
       #
       # @param [Object] value
       #
@@ -165,7 +181,7 @@ module Coercible
       # Coerce value to decimal
       #
       # @example
-      #   Coercible::Coercion::String.to_decimal('1.2')  # => #<BigDecimal:b72157d4,'0.12E1',8(8)>
+      #   coercer[String].to_decimal('1.2')  # => #<BigDecimal:b72157d4,'0.12E1',8(8)>
       #
       # @param [Object] value
       #

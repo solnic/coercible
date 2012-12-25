@@ -10,7 +10,7 @@ module Coercible
       # Coerce given value to String
       #
       # @example
-      #   Coercible::Coercion::BigDecimal.to_string(BigDecimal('1.0')) # => "1.0"
+      #   coercer[BigDecimal].to_string(BigDecimal('1.0')) # => "1.0"
       #
       # @param [BigDecimal] value
       #

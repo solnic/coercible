@@ -9,7 +9,13 @@ module Coercible
 
       config_keys [ :datetime_format, :datetime_proc, :boolean_map ]
 
-      # @api public
+      # Return default config for Integer coercer type
+      #
+      # @return [Configuration]
+      #
+      # @see Configurable#config
+      #
+      # @api private
       def self.config
         # FIXME: Remove after Rubinius 2.0 is released
         is_rbx = defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
@@ -24,9 +30,32 @@ module Coercible
         end
       end
 
+      # Return datetime format from config
+      #
+      # @return [::String]
+      #
       # @api private
-      attr_reader :datetime_format, :datetime_proc, :boolean_map
+      attr_reader :datetime_format
 
+      # Return datetime proc from config
+      #
+      # @return [Proc]
+      #
+      # @api private
+      attr_reader :datetime_proc
+
+      # Return boolean map from config
+      #
+      # @return [::Hash]
+      #
+      # @api private
+      attr_reader :boolean_map
+
+      # Initialize a new Integer coercer instance and set its configuration
+      #
+      # @return [undefined]
+      #
+      # @api private
       def initialize(coercer = Coercer.new, config = self.class.config)
         super(coercer)
         @boolean_map     = config.boolean_map
@@ -37,7 +66,7 @@ module Coercible
       # Coerce given value to String
       #
       # @example
-      #   Coercible::Coercion::Fixnum.to_string(1)  # => "1"
+      #   coercer[Integer].to_string(1)  # => "1"
       #
       # @param [Fixnum] value
       #
@@ -51,7 +80,7 @@ module Coercible
       # Passthrough the value
       #
       # @example
-      #   Coercible::Coercion::Fixnum.to_integer(1)  # => 1
+      #   coercer[Integer].to_integer(1)  # => 1
       #
       # @param [Fixnum] value
       #
@@ -65,10 +94,10 @@ module Coercible
       # Coerce given value to a Boolean
       #
       # @example with a 1
-      #   Coercible::Coercion::Fixnum.to_boolean(1)  # => true
+      #   coercer[Integer].to_boolean(1)  # => true
       #
       # @example with a 0
-      #   Coercible::Coercion::Fixnum.to_boolean(0)  # => false
+      #   coercer[Integer].to_boolean(0)  # => false
       #
       # @param [Fixnum] value
       #
@@ -84,7 +113,7 @@ module Coercible
       # Coerce given value to a DateTime
       #
       # @example
-      #   Coercible::Coercion::Fixnum.to_datetime(0)  # => Thu, 01 Jan 1970 00:00:00 +0000
+      #   coercer[Integer].to_datetime(0)  # => Thu, 01 Jan 1970 00:00:00 +0000
       #
       # @param [Integer] value
       #

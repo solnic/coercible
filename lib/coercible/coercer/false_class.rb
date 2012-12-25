@@ -8,7 +8,7 @@ module Coercible
       # Coerce given value to String
       #
       # @example
-      #   Coercible::Coercion::FalseClass.to_string(false)  # => "false"
+      #   coercer[FalseClass].to_string(false)  # => "false"
       #
       # @param [FalseClass] value
       #
