@@ -20,6 +20,27 @@ Or install it yourself as:
 
 ## Usage
 
+Coercible gives you access to coercer objects where each object is responsible
+for coercing only one type into other types. For example a string coercer knows
+only how to coerce string objects, integer coercer knows only how to coerce integers
+etc.
+
+Here's the most basic example:
+
+```ruby
+coercer = Coercible::Coercer.new
+
+# coerce a string to a date
+coercer[String].to_date('2012/12/25') # => #<Date: 4912573/2,0,2299161>
+
+# coerce a string to a boolean value
+coercer[String].to_string('yes') # => true
+
+# you got the idea :)
+```
+
+For more control you can configure your coercer like that:
+
 ``` ruby
 # build coercer instance
 coercer = Coercible::Coercer.new do |config|
@@ -30,6 +51,9 @@ end
 coercer[String].to_boolean('yup') # => true
 coercer[String].to_boolean('nope') # => false
 ```
+
+Note that at the moment only Integer and String are configurable. More configurable
+coercers will be added later whenever we find good usecases.
 
 ## Contributing
 
