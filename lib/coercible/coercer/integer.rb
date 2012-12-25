@@ -7,9 +7,7 @@ module Coercible
 
       primitive ::Integer
 
-      config_keys [ :datetime_format, :datetime_proc ]
-
-      BOOLEAN_MAP = { 0 => false, 1 => true }.freeze
+      config_keys [ :datetime_format, :datetime_proc, :boolean_map ]
 
       # @api public
       def self.config
@@ -21,14 +19,17 @@ module Coercible
 
           config.datetime_proc   = is_rbx ?
             Proc.new { |value| "#{value * 10**3}" } : Proc.new { |value| "#{value}" }
+
+          config.boolean_map = { 0 => false, 1 => true }
         end
       end
 
       # @api private
-      attr_reader :datetime_format, :datetime_proc
+      attr_reader :datetime_format, :datetime_proc, :boolean_map
 
       def initialize(coercer = Coercer.new, config = self.class.config)
         super(coercer)
+        @boolean_map     = config.boolean_map
         @datetime_format = config.datetime_format
         @datetime_proc   = config.datetime_proc
       end
@@ -75,7 +76,7 @@ module Coercible
       #
       # @api public
       def to_boolean(value)
-        BOOLEAN_MAP.fetch(value) { raise(ArgumentError) }
+        boolean_map.fetch(value) { raise(ArgumentError) }
       end
 
       # Coerce given value to a DateTime
