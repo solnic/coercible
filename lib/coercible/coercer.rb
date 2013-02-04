@@ -100,19 +100,10 @@ module Coercible
     #
     # @api public
     def [](klass)
-      fetch(klass) || coercers[::Object]
+      coercers[klass] || initialize_coercer(klass)
     end
 
     private
-
-    # Fetch an existing coercer or create a new instance
-    #
-    # @return [Coercer::Object]
-    #
-    # @api private
-    def fetch(klass)
-      coercers[klass] || initialize_coercer(klass)
-    end
 
     # Initialize a new coercer instance for the give type
     #
