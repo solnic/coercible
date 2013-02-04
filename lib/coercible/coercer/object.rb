@@ -110,6 +110,15 @@ module Coercible
         coerce_with_method(value, :to_int)
       end
 
+      # Return if the value was successfuly coerced
+      #
+      # @return [TrueClass,FalseClass]
+      #
+      # @api public
+      def coerced?(value)
+        value.kind_of?(self.class.primitive)
+      end
+
       private
 
       # Raise an unsupported coercion error
