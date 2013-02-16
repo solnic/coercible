@@ -2,6 +2,10 @@ module Coercible
   EXTRA_CONST_ARGS = (RUBY_VERSION < '1.9' ? [] : [ false ]).freeze
 
   UnsupportedCoercion = Class.new(StandardError)
+
+  def self.rbx?
+    @is_rbx ||= defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
+  end
 end
 
 require 'date'

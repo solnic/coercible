@@ -17,14 +17,14 @@ module Coercible
       #
       # @api private
       def self.config
-        # FIXME: Remove after Rubinius 2.0 is released
-        is_rbx = defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
-
         super do |config|
-          config.datetime_format = is_rbx ? '%Q' : '%s'
-
-          config.datetime_proc   = is_rbx ?
-            Proc.new { |value| "#{value * 10**3}" } : Proc.new { |value| "#{value}" }
+          # FIXME: Remove after Rubinius 2.0 is released
+          config.datetime_format, config.datetime_proc =
+            if Coercible.rbx?
+              [ '%Q', Proc.new { |value| "#{value * 10**3}" } ]
+            else
+              [ '%s', Proc.new { |value| "#{value}" } ]
+            end
 
           config.boolean_map = { 0 => false, 1 => true }
         end
