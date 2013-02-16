@@ -1,6 +1,6 @@
 # Coercible
 
-[![Build Status](https://secure.travis-ci.org/solnic/coercible.png)](http://travis-ci.org/solnic/coercible)
+[![Build Status](https://travis-ci.org/solnic/coercible.png?branch=master)](https://travis-ci.org/solnic/coercible)
 [![Code Climate](https://codeclimate.com/github/solnic/coercible.png)](https://codeclimate.com/github/solnic/coercible)
 [![Dependency Status](https://gemnasium.com/solnic/coercible.png)](https://gemnasium.com/solnic/coercible)
 
