@@ -143,7 +143,7 @@ module Coercible
       #
       # @api private
       def method_missing(method, *args)
-        if method.to_s =~ COERCION_METHOD_REGEXP and args.size == 1
+        if method.to_s =~ COERCION_METHOD_REGEXP && args.size == 1
           args.first
         else
           super
