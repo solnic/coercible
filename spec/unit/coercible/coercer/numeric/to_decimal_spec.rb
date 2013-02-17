@@ -1,10 +1,19 @@
 require 'spec_helper'
 
 describe Coercer::Numeric, '.to_decimal' do
-  subject { object.to_decimal(numeric) }
+  subject { object.to_decimal(value) }
 
-  let(:object)  { described_class.new }
-  let(:numeric) { Rational(2, 2)  }
+  let(:object) { described_class.new }
 
-  it { should eql(BigDecimal('1.0')) }
+  context "with an object responding to #to_d" do
+    let(:value)  { Rational(2, 2)  }
+
+    it { should eql(BigDecimal('1.0')) }
+  end
+
+  context "with an object not responding to #to_d" do
+    let(:value) { Class.new { def to_s; '1'; end }.new }
+
+    it { should eql(BigDecimal('1.0')) }
+  end
 end
