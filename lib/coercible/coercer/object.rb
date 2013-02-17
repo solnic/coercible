@@ -29,6 +29,15 @@ module Coercible
         @coercers = coercers
       end
 
+      # Inspect the coercer object
+      #
+      # @return [String]
+      #
+      # @api public
+      def inspect
+        "#<#{self.class} primitive=#{self.class.primitive}>"
+      end
+
       # Create an Array from any Object
       #
       # @example with an object that does not respond to #to_a or #to_ary
