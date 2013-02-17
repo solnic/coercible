@@ -7,6 +7,10 @@ describe Coercer::TimeCoercions, '.to_datetime' do
   let(:coercer) { Class.new(Coercer::Object) { include Coercer::TimeCoercions } }
   let(:value)   { mock('value') }
 
+  after do
+    Coercer::Object.descendants.delete(coercer)
+  end
+
   context 'when the value responds to #to_datetime' do
     before do
       object.extend Coercer::TimeCoercions

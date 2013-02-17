@@ -7,6 +7,10 @@ describe Coercer::TimeCoercions, '.to_string' do
   let(:coercer) { Class.new(Coercer::Object) { include Coercer::TimeCoercions } }
   let(:value)   { mock('value') }
 
+  after do
+    Coercer::Object.descendants.delete(coercer)
+  end
+
   before do
     object.extend Coercer::TimeCoercions
 
