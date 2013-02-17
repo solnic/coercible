@@ -104,7 +104,7 @@ module Coercible
 
     private
 
-    # Initialize a new coercer instance for the give type
+    # Initialize a new coercer instance for the given type
     #
     # If a coercer class supports configuration it will receive it from the
     # global configuration object
