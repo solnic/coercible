@@ -1,3 +1,7 @@
+# v0.1.0 2013-02-17
+
+* [internal] Small clean-up and improved tests (solnic)
+
 # v0.0.2 2013-02-16
 
 * [feature] Added Coercer::Object#coerced? (solnic)
