@@ -47,7 +47,7 @@ module Coercible
 
       yield(configuration) if block_given?
 
-      super({}, configuration)
+      super(configuration)
     end
 
     # Return configuration keys for Coercer instance
@@ -81,10 +81,9 @@ module Coercible
     # @return [undefined]
     #
     # @api private
-    def initialize(coercers = {}, config = nil)
+    def initialize(config, coercers = {})
       @coercers = coercers
       @config   = config
-      initialize_default_coercer
     end
 
     # Access a specific coercer object for the given type
@@ -121,15 +120,6 @@ module Coercible
           args   << config_for(coercer) if coercer.respond_to?(:config_name)
           coercer.new(*args)
         end
-    end
-
-    # Initialize default coercer object
-    #
-    # @return [Coercer::Object]
-    #
-    # @api private
-    def initialize_default_coercer
-      coercers[::Object] = Coercer::Object.new(self)
     end
 
     # Find configuration for the given coercer type
