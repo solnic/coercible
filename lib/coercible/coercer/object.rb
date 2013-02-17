@@ -3,7 +3,7 @@ module Coercible
 
     # Coerce Object values
     class Object
-      extend DescendantsTracker, TypeLookup, Options
+      extend TypeLookup, Options
 
       accept_options :primitive
 

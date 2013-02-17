@@ -4,6 +4,11 @@ module Coercible
   module Options
     Undefined = Class.new.freeze
 
+    # @api private
+    def self.extended(descendant)
+      descendant.extend(DescendantsTracker)
+    end
+
     # Returns default options hash for a given attribute class
     #
     # @example

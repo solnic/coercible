@@ -34,7 +34,7 @@ module Coercible
       #
       # @api public
       def config(&block)
-        configuration = Configuration.build(config_keys)
+        configuration = configuration_class.build(config_keys)
         yield configuration
         configuration
       end
@@ -45,7 +45,12 @@ module Coercible
       #
       # @api private
       def config_name
-        self.name.downcase.split('::').last.to_sym
+        name.downcase.split('::').last.to_sym
+      end
+
+      # @api private
+      def configuration_class
+        Configuration
       end
 
     end # module Configurable
