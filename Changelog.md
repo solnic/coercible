@@ -1,3 +1,7 @@
+# v0.2.0 2013-03-08
+
+* [internal] Update to latest backports (solnic)
+
 # v0.1.0 2013-02-17
 
 * [internal] Small clean-up and improved tests (solnic)
