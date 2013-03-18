@@ -27,6 +27,24 @@ module Coercible
     # @api private
     attr_reader :config
 
+    MAPPING = {
+      Integer    => :to_integer,
+      Date       => :to_date,
+      DateTime   => :to_datetime,
+      String     => :to_string,
+      Set        => :to_set,
+      BigDecimal => :to_decimal,
+      Float      => :to_float,
+      Time       => :to_time,
+      TrueClass  => :to_boolean,
+      FalseClass => :to_boolean,
+      Array      => :to_array,
+      Hash       => :to_hash,
+      Class      => :to_constant,
+      Module     => :to_constant,
+      Symbol     => :to_symbol,
+    }.freeze
+
     # Build a new coercer
     #
     # @example
