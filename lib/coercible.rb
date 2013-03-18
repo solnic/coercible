@@ -3,6 +3,15 @@ module Coercible
 
   UnsupportedCoercion = Class.new(StandardError)
 
+  # Test for rubinius platform
+  #
+  # @return [true]
+  #   if running under rubinius
+  #
+  # @return [false]
+  #   otherwise
+  #
+  # @api private
   def self.rbx?
     @is_rbx ||= defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
   end
