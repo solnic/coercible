@@ -6,7 +6,7 @@ module Coercible
 
     # Hook called when descendant was extended
     #
-    # @param [Class|Module] descendant
+    # @param [Class,Module] descendant
     #
     # @return [undefined]
     #
