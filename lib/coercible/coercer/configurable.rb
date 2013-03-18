@@ -48,6 +48,10 @@ module Coercible
         name.downcase.split('::').last.to_sym
       end
 
+      # Return configuration class
+      #
+      # @return [Class:Configuration]
+      #
       # @api private
       def configuration_class
         Configuration

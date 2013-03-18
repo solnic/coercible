@@ -31,6 +31,9 @@ module Coercible
 
       # Inspect the coercer object
       #
+      # @example 
+      #   coercer[Object].inspect # => "<Coercer::Object primitive=Object>"
+      #
       # @return [String]
       #
       # @api public
@@ -120,6 +123,12 @@ module Coercible
       end
 
       # Return if the value was successfuly coerced
+      #
+      # @example when coercion was successful
+      #   coercer[String].coerced?(1) # => true
+      #
+      # @example when coercion was NOT successful
+      #   coercer[String].coerced?("foo") # => false
       #
       # @return [TrueClass,FalseClass]
       #
