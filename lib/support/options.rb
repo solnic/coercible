@@ -4,6 +4,12 @@ module Coercible
   module Options
     Undefined = Class.new.freeze
 
+    # Hook called when descendant was extended
+    #
+    # @param [Class|Module] descendant
+    #
+    # @return [undefined]
+    #
     # @api private
     def self.extended(descendant)
       descendant.extend(DescendantsTracker)
