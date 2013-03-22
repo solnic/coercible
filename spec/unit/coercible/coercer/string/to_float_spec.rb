@@ -45,13 +45,12 @@ describe Coercer::String, '.to_float' do
   context 'with an invalid float string' do
     let(:string) { 'non-float' }
 
-    it { should equal(string) }
+    specify { expect { subject }.to raise_error(UnsupportedCoercion) }
   end
 
   context 'string starts with e' do
     let(:string) { 'e1' }
 
-    # In further version it will raise exception
-    it { should == 'e1' }
+    specify { expect { subject }.to raise_error(UnsupportedCoercion) }
   end
 end

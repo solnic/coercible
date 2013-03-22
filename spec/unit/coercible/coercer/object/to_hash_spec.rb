@@ -17,6 +17,6 @@ describe Coercer::Object, '.to_hash' do
   end
 
   context 'when the value does not respond to #to_hash' do
-    it { should be(value) }
+    specify { expect { subject }.to raise_error(UnsupportedCoercion) }
   end
 end

@@ -50,7 +50,7 @@ describe Coercer::String, '.to_integer' do
   context 'with an invalid integer string' do
     let(:string) { 'non-integer' }
 
-    it { should equal(string) }
+    specify { expect { subject }.to raise_error(UnsupportedCoercion) }
   end
 
   context 'when integer string is big' do
@@ -62,7 +62,6 @@ describe Coercer::String, '.to_integer' do
   context 'string starts with e' do
     let(:string) { 'e1' }
 
-    # In further version it will raise exception
-    it { should == 'e1' }
+    specify { expect { subject }.to raise_error(UnsupportedCoercion) }
   end
 end
