@@ -17,6 +17,6 @@ describe Coercer::Object, '.to_string' do
   end
 
   context 'when the value does not respond to #to_str' do
-    it { should be(value) }
+    specify { expect { subject }.to raise_error(UnsupportedCoercion) }
   end
 end

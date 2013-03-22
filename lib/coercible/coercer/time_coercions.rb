@@ -73,11 +73,10 @@ module Coercible
       #
       # @api private
       def coerce_with_method(value, method)
-        coerced = super
-        if coerced.equal?(value)
-          coercers[::String].public_send(method, to_string(value))
+        if value.respond_to?(method)
+          value.public_send(method)
         else
-          coerced
+          coercers[::String].public_send(method, to_string(value))
         end
       end
 
