@@ -41,6 +41,19 @@ module Coercible
         "#<#{self.class} primitive=#{self.class.primitive}>"
       end
 
+      # Return pipeline object
+      #
+      # @example Return a string to fixnum pipeline
+      #   coerce[String].pipeline(Fixnum).call('10') # => "10"
+      #
+      # @param [Class] target
+      #
+      # @return [Pipeline]
+      #
+      def pipeline(target)
+        Pipeline.new(self, target)
+      end
+
       # Create an Array from any Object
       #
       # @example with an object that does not respond to #to_a or #to_ary

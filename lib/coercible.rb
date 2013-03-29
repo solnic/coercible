@@ -1,3 +1,5 @@
+require 'equalizer'
+
 module Coercible
   EXTRA_CONST_ARGS = (RUBY_VERSION < '1.9' ? [] : [ false ]).freeze
 
@@ -53,3 +55,5 @@ require 'coercible/coercer/true_class'
 
 require 'coercible/coercer/array'
 require 'coercible/coercer/hash'
+
+require 'coercible/pipeline'
