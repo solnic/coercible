@@ -42,6 +42,6 @@ describe Coercer::String, '.to_decimal' do
   context 'with an invalid decimal string' do
     let(:string) { 'non-decimal' }
 
-    it { should equal(string) }
+    specify { expect { subject }.to raise_error(UnsupportedCoercion) }
   end
 end

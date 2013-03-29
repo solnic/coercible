@@ -79,7 +79,7 @@ module Coercible
       #
       # @api public
       def to_hash(value)
-        coerce_with_method(value, :to_hash)
+        coerce_with_method(value, :to_hash, __method__)
       end
 
       # Create a String from the Object if possible
@@ -99,7 +99,7 @@ module Coercible
       #
       # @api public
       def to_string(value)
-        coerce_with_method(value, :to_str)
+        coerce_with_method(value, :to_str, __method__)
       end
 
       # Create an Integer from the Object if possible
@@ -119,7 +119,7 @@ module Coercible
       #
       # @api public
       def to_integer(value)
-        coerce_with_method(value, :to_int)
+        coerce_with_method(value, :to_int, __method__)
       end
 
       # Return if the value was successfuly coerced
@@ -177,8 +177,8 @@ module Coercible
       # @return [Object]
       #
       # @api private
-      def coerce_with_method(value, method)
-        value.respond_to?(method) ? value.public_send(method) : value
+      def coerce_with_method(value, method, ref_method)
+        value.respond_to?(method) ? value.public_send(method) : raise_unsupported_coercion(value, ref_method)
       end
 
     end # class Object

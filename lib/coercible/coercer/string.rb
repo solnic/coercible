@@ -159,9 +159,10 @@ module Coercible
         else
           # coerce to a Float first to evaluate scientific notation (if any)
           # that may change the integer part, then convert to an integer
-          coerced = to_float(value)
-          ::Float === coerced ? coerced.to_i : coerced
+          to_float(value).to_i
         end
+      rescue UnsupportedCoercion
+        raise_unsupported_coercion(value, __method__)
       end
 
       # Coerce value to float
@@ -176,6 +177,8 @@ module Coercible
       # @api public
       def to_float(value)
         to_numeric(value, :to_f)
+      rescue UnsupportedCoercion
+        raise_unsupported_coercion(value, __method__)
       end
 
       # Coerce value to decimal
@@ -190,6 +193,8 @@ module Coercible
       # @api public
       def to_decimal(value)
         to_numeric(value, :to_d)
+      rescue UnsupportedCoercion
+        raise_unsupported_coercion(value, __method__)
       end
 
       private
@@ -226,7 +231,7 @@ module Coercible
         if value =~ NUMERIC_REGEXP
           $1.public_send(method)
         else
-          value
+          raise_unsupported_coercion(value, method)
         end
       end
 
