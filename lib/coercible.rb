@@ -22,7 +22,6 @@ require 'time'
 require 'bigdecimal'
 require 'bigdecimal/util'
 require 'set'
-require 'backports'
 
 require 'descendants_tracker'
 require 'support/options'
