@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Powerful, flexible and configurable coercion library. And nothing more.}
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/solnic/coercible"
+  gem.license       = "MIT"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
