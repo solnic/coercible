@@ -1,3 +1,7 @@
+# v1.0.0 2013-12-10
+
+Dropped 1.8.7 support.
+
 # v0.2.0 2013-03-08
 
 * [internal] Update to latest backports (solnic)
