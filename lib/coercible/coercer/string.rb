@@ -17,6 +17,8 @@ module Coercible
       EXPONENT_REGEXP   = /(?:[eE][-+]?\d+)/.freeze
       FRACTIONAL_REGEXP = /(?:\.\d+)/.freeze
 
+      COERCION_FAILURE = ::Object.new.freeze
+
       NUMERIC_REGEXP    = /\A(
         #{INTEGER_REGEXP}#{FRACTIONAL_REGEXP}?#{EXPONENT_REGEXP}? |
         #{FRACTIONAL_REGEXP}#{EXPONENT_REGEXP}?
@@ -176,9 +178,9 @@ module Coercible
       #
       # @api public
       def to_float(value)
-        to_numeric(value, :to_f)
-      rescue UnsupportedCoercion
-        raise_unsupported_coercion(value, __method__)
+        raise_on_coercion_failure(value, __method__) do
+          to_numeric(value, :to_f)
+        end
       end
 
       # Coerce value to decimal
@@ -192,9 +194,9 @@ module Coercible
       #
       # @api public
       def to_decimal(value)
-        to_numeric(value, :to_d)
-      rescue UnsupportedCoercion
-        raise_unsupported_coercion(value, __method__)
+        raise_on_coercion_failure(value, __method__) do
+          to_numeric(value, :to_d)
+        end
       end
 
       private
@@ -231,7 +233,7 @@ module Coercible
         if value =~ NUMERIC_REGEXP
           $1.public_send(method)
         else
-          raise_unsupported_coercion(value, method)
+          COERCION_FAILURE
         end
       end
 
@@ -248,6 +250,25 @@ module Coercible
         parser.parse(value)
       rescue ArgumentError
         raise_unsupported_coercion(value, method)
+      end
+
+      # Call the given block and return resulting value unless it has failed
+      #
+      # @param [String] value
+      #   value to typecast
+      #
+      # @param [Symbol] method
+      #
+      # @return [Object]
+      #
+      # @api private
+      def raise_on_coercion_failure(value, method, &block)
+        result = block.call
+        if result == COERCION_FAILURE
+          raise_unsupported_coercion(value, method)
+        else
+          result
+        end
       end
 
     end # class String
