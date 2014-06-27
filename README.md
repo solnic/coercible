@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/solnic/coercible.png?branch=master)](https://travis-ci.org/solnic/coercible)
 [![Code Climate](https://codeclimate.com/github/solnic/coercible.png)](https://codeclimate.com/github/solnic/coercible)
 [![Dependency Status](https://gemnasium.com/solnic/coercible.png)](https://gemnasium.com/solnic/coercible)
-[![Inline docs](http://inch-pages.github.io/github/solnic/coercible.png)](http://inch-pages.github.io/github/solnic/coercible)
+[![Inline docs](http://inch-ci.org/github/solnic/coercible.png)](http://inch-ci.org/github/solnic/coercible)
 
 ## Installation
 
