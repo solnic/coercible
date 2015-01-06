@@ -154,8 +154,10 @@ module Coercible
       #
       # @api public
       def to_integer(value)
-        if value =~ /\A#{INTEGER_REGEXP}\z/
-          value.to_i
+        i = value.to_i
+
+        if i.to_s == value
+          i
         else
           # coerce to a Float first to evaluate scientific notation (if any)
           # that may change the integer part, then convert to an integer
