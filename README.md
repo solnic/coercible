@@ -1,8 +1,18 @@
+[gem]: https://rubygems.org/gems/coercible
+[travis]: https://travis-ci.org/solnic/coercible
+[gemnasium]: https://gemnasium.com/solnic/coercible
+[codeclimate]: https://codeclimate.com/github/solnic/coercible
+[coveralls]: https://coveralls.io/r/solnic/coercible
+[inchpages]: http://inch-ci.org/github/solnic/coercible/
+
 # Coercible
 
-[![Build Status](https://travis-ci.org/solnic/coercible.png?branch=master)](https://travis-ci.org/solnic/coercible)
-[![Code Climate](https://codeclimate.com/github/solnic/coercible.png)](https://codeclimate.com/github/solnic/coercible)
-[![Dependency Status](https://gemnasium.com/solnic/coercible.png)](https://gemnasium.com/solnic/coercible)
+[![Gem Version](https://badge.fury.io/rb/coercible.svg)][gem]
+[![Build Status](https://travis-ci.org/solnic/coercible.svg?branch=master)][travis]
+[![Dependency Status](https://gemnasium.com/solnic/coercible.png)][gemnasium]
+[![Code Climate](https://codeclimate.com/github/solnic/coercible/badges/gpa.svg)][codeclimate]
+[![Test Coverage](https://codeclimate.com/github/solnic/coercible/badges/coverage.svg)][codeclimate]
+[![Inline docs](http://inch-ci.org/github/solnic/coercible.svg?branch=master&style=flat)][inchpages]
 
 ## Installation
 
