@@ -9,7 +9,7 @@ module Coercible
 
       primitive ::Object
 
-      COERCION_METHOD_REGEXP = /\Ato_/.freeze
+      COERCION_METHOD_MARKER = "to_".freeze
 
       # Return coercers object
       #
@@ -161,7 +161,7 @@ module Coercible
       #
       # @api private
       def method_missing(method, *args)
-        if method.to_s =~ COERCION_METHOD_REGEXP && args.size == 1
+        if method.to_s.start_with?(COERCION_METHOD_MARKER) && args.size == 1
           args.first
         else
           super
