@@ -1,9 +1,6 @@
-if ENV['COVERAGE']
-  require 'simplecov'
-  SimpleCov.start do
-    add_filter "/spec/"
-    add_filter "lib/support"
-  end
+if RUBY_ENGINE == "rbx"
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
 end
 
 require 'coercible'

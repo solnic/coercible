@@ -1,6 +1,9 @@
+sudo: false
+cache: bundler
 language: ruby
-before_install: gem install bundler
 bundler_args: --without guard metrics
+env:
+  - CODECLIMATE_REPO_TOKEN=ac43bd25904f09e52ef2c9f43d3618f7ca52ad9b2103e007f9a3c4da58a04071
 script: "bundle exec rake spec"
 rvm:
   - 1.9
@@ -11,7 +14,10 @@ rvm:
   - rbx
   - jruby-head
   - ruby-head
-
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-head
 notifications:
   email:
     - piotr.solnica@gmail.com
