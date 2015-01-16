@@ -6,7 +6,7 @@ describe Coercer::Float, '.to_decimal' do
   let(:object) { described_class.new }
   let(:float)  { 1.0             }
 
-  it { should be_instance_of(BigDecimal) }
+  it { is_expected.to be_instance_of(BigDecimal) }
 
-  it { should eql(BigDecimal('1.0')) }
+  it { is_expected.to eql(BigDecimal('1.0')) }
 end

@@ -8,13 +8,13 @@ describe Coercer::Integer, '.to_boolean' do
   context 'when the fixnum is 1' do
     let(:fixnum) { 1 }
 
-    it { should be(true) }
+    it { is_expected.to be(true) }
   end
 
   context 'when the fixnum is 0' do
     let(:fixnum) { 0 }
 
-    it { should be(false) }
+    it { is_expected.to be(false) }
   end
 
   context 'when the fixnum is not 1 or 0' do

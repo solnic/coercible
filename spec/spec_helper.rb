@@ -7,6 +7,7 @@ if ENV['COVERAGE']
 end
 
 require 'coercible'
+require 'rspec/its'
 
 include Coercible
 

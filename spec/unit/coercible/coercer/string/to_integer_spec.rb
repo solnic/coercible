@@ -41,9 +41,9 @@ describe Coercer::String, '.to_integer' do
     context "with #{value.inspect}" do
       let(:string) { value }
 
-      it { should be_kind_of(Integer) }
+      it { is_expected.to be_kind_of(Integer) }
 
-      it { should eql(expected) }
+      it { is_expected.to eql(expected) }
     end
   end
 
@@ -56,7 +56,7 @@ describe Coercer::String, '.to_integer' do
   context 'when integer string is big' do
     let(:string) { '334490140000101135' }
 
-    it { should == 334490140000101135  }
+    it { is_expected.to eq(334490140000101135)  }
   end
 
   context 'string starts with e' do

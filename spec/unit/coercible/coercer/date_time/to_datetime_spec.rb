@@ -6,5 +6,5 @@ describe Coercer::DateTime, '.to_datetime' do
   let(:object)    { described_class.new          }
   let(:date_time) { DateTime.new(2012, 1, 1) }
 
-  it { should equal(date_time) }
+  it { is_expected.to equal(date_time) }
 end

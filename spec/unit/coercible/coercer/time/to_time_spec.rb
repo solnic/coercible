@@ -6,5 +6,5 @@ describe Coercer::Time, '.to_time' do
   let(:object) { described_class.new        }
   let(:time)   { Time.local(2012, 1, 1) }
 
-  it { should equal(time) }
+  it { is_expected.to equal(time) }
 end

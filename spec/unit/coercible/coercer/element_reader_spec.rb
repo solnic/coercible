@@ -8,12 +8,12 @@ describe Coercer, '#[]' do
   context "with a known type" do
     let(:type) { ::String }
 
-    it { should be_instance_of(Coercer::String) }
+    it { is_expected.to be_instance_of(Coercer::String) }
   end
 
   context "with an unknown type" do
     let(:type) { Object }
 
-    it { should be_instance_of(Coercer::Object) }
+    it { is_expected.to be_instance_of(Coercer::Object) }
   end
 end

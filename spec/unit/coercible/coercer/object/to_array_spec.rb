@@ -9,43 +9,43 @@ describe Coercer::Object, '.to_array' do
 
   context 'when the value responds to #to_ary' do
     before do
-      value.should_receive(:to_ary).with().and_return(coerced)
+      expect(value).to receive(:to_ary).and_return(coerced)
     end
 
-    it { should be(coerced) }
+    it { is_expected.to be(coerced) }
 
     it 'does not call #to_a if #to_ary is available' do
-      value.should_not_receive(:to_a)
+      expect(value).not_to receive(:to_a)
       subject
     end
   end
 
   context 'when the value responds to #to_a but not #to_ary' do
     before do
-      value.should_receive(:to_a).with().and_return(coerced)
+      expect(value).to receive(:to_a).and_return(coerced)
     end
 
-    it { should be(coerced) }
+    it { is_expected.to be(coerced) }
   end
 
   context 'when the value does not respond to #to_ary or #to_a' do
-    it { should be_instance_of(Array) }
+    it { is_expected.to be_instance_of(Array) }
 
-    it { should == coerced }
+    it { is_expected.to eq(coerced) }
   end
 
   context 'when the value returns nil from #to_ary' do
     before do
-      value.should_receive(:to_ary).with().and_return(nil)
+      expect(value).to receive(:to_ary).and_return(nil)
     end
 
     it 'calls #to_a as a fallback' do
-      value.should_receive(:to_a).with().and_return(coerced)
-      should be(coerced)
+      expect(value).to receive(:to_a).and_return(coerced)
+      is_expected.to be(coerced)
     end
 
     it 'wraps the value in an Array if #to_a is not available' do
-      should == coerced
+      is_expected.to eq(coerced)
     end
   end
 end

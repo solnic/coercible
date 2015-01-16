@@ -9,7 +9,7 @@ describe Coercer::String, '.to_boolean' do
     context "with #{value.inspect}" do
       let(:string) { value }
 
-      it { should be(true) }
+      it { is_expected.to be(true) }
     end
   end
 
@@ -17,7 +17,7 @@ describe Coercer::String, '.to_boolean' do
     context "with #{value.inspect}" do
       let(:string) { value }
 
-      it { should be(false) }
+      it { is_expected.to be(false) }
     end
   end
 

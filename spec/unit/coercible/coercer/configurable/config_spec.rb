@@ -11,15 +11,15 @@ describe Coercer::Configurable, '.config' do
   }
 
   let(:block)               { Proc.new { |config| config.test } }
-  let(:configuration)       { mock('configuration') }
-  let(:configuration_class) { mock('configuration_class') }
+  let(:configuration)       { double('configuration') }
+  let(:configuration_class) { double('configuration_class') }
 
   before do
-    object.stub!(:configuration_class => configuration_class)
-    configuration_class.should_receive(:build).with(object.config_keys).
+    allow(object).to receive_messages(:configuration_class => configuration_class)
+    expect(configuration_class).to receive(:build).with(object.config_keys).
       and_return(configuration)
-    configuration.should_receive(:test)
+    expect(configuration).to receive(:test)
   end
 
-  it { should be(configuration) }
+  it { is_expected.to be(configuration) }
 end

@@ -5,5 +5,5 @@ describe Coercer::Decimal, '.to_decimal' do
 
   let(:value) { BigDecimal('1.0') }
 
-  it { should be(value) }
+  it { is_expected.to be(value) }
 end

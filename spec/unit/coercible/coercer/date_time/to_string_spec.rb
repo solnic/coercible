@@ -6,7 +6,7 @@ describe Coercer::DateTime, '.to_string' do
   let(:object)    { described_class.new }
   let(:date_time) { DateTime.new(2011, 1, 1, 0, 0, 0, 0) }
 
-  it { should be_instance_of(String) }
+  it { is_expected.to be_instance_of(String) }
 
-  it { should eql('2011-01-01T00:00:00+00:00') }
+  it { is_expected.to eql('2011-01-01T00:00:00+00:00') }
 end

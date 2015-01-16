@@ -6,5 +6,5 @@ describe Coercer::Date, '.to_date' do
   let(:object) { described_class.new      }
   let(:date)   { Date.new(2012, 1, 1) }
 
-  it { should equal(date) }
+  it { is_expected.to equal(date) }
 end

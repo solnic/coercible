@@ -6,7 +6,7 @@ describe Coercer::Integer, '.to_float' do
   let(:object) { described_class.new }
   let(:fixnum) { 1               }
 
-  it { should be_instance_of(Float) }
+  it { is_expected.to be_instance_of(Float) }
 
-  it { should eql(1.0) }
+  it { is_expected.to eql(1.0) }
 end

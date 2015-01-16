@@ -6,5 +6,5 @@ describe Coercer::Numeric, '.to_float' do
   let(:object)  { described_class.new }
   let(:numeric) { Rational(2, 2)  }
 
-  it { should eql(1.0) }
+  it { is_expected.to eql(1.0) }
 end

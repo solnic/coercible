@@ -14,5 +14,5 @@ describe Coercer::Configurable, '.config_name' do
     }
   }
 
-  it { should be(:test) }
+  it { is_expected.to be(:test) }
 end

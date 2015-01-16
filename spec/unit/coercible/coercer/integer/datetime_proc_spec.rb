@@ -8,14 +8,14 @@ describe Coercer::Integer, '#datetime_proc' do
   context "with Rubinius" do
     before do
       unless Coercible.rbx?
-        Coercible.stub!(:rbx? => true)
+        allow(Coercible).to receive_messages(:rbx? => true)
       end
     end
 
-    it { should be_instance_of(Proc) }
+    it { is_expected.to be_instance_of(Proc) }
   end
 
   context "with other Ruby VMs" do
-    it { should be_instance_of(Proc) }
+    it { is_expected.to be_instance_of(Proc) }
   end
 end

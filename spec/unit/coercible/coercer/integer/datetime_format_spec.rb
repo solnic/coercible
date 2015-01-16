@@ -8,20 +8,20 @@ describe Coercer::Integer, '#datetime_format' do
   context "with Rubinius" do
     before do
       unless Coercible.rbx?
-        Coercible.stub!(:rbx? => true)
+        allow(Coercible).to receive_messages(:rbx? => true)
       end
     end
 
-    it { should == '%Q' }
+    it { is_expected.to eq('%Q') }
   end
 
   context "with other Ruby VMs" do
     before do
       if Coercible.rbx?
-        Coercible.stub!(:rbx? => false)
+        allow(Coercible).to receive_messages(:rbx? => false)
       end
     end
 
-    it { should == '%s' }
+    it { is_expected.to eq('%s') }
   end
 end

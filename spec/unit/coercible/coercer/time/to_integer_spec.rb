@@ -6,5 +6,5 @@ describe Coercer::Time, '.to_integer' do
   let(:time)  { Time.now }
   let(:value) { time     }
 
-  it { should eql(time.to_i) }
+  it { is_expected.to eql(time.to_i) }
 end

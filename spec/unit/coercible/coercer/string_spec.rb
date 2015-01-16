@@ -5,7 +5,7 @@ describe Coercer::String do
     describe '.config_name' do
       subject { described_class.config_name }
 
-      it { should be(:string) }
+      it { is_expected.to be(:string) }
     end
   end
 end

@@ -5,7 +5,7 @@ describe Coercer::TimeCoercions, '.to_string' do
 
   let(:object)  { coercer.new }
   let(:coercer) { Class.new(Coercer::Object) { include Coercer::TimeCoercions } }
-  let(:value)   { mock('value') }
+  let(:value)   { double('value') }
 
   after do
     Coercer::Object.descendants.delete(coercer)
@@ -14,10 +14,10 @@ describe Coercer::TimeCoercions, '.to_string' do
   before do
     object.extend Coercer::TimeCoercions
 
-    value.should_receive(:to_s).and_return('2011-01-01')
+    expect(value).to receive(:to_s).and_return('2011-01-01')
   end
 
-  it { should be_instance_of(String) }
+  it { is_expected.to be_instance_of(String) }
 
-  it { should eql('2011-01-01') }
+  it { is_expected.to eql('2011-01-01') }
 end

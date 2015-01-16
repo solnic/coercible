@@ -19,4 +19,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency 'descendants_tracker', '~> 0.0.1'
+
+  gem.add_development_dependency 'rake', '~> 10.0'
+  gem.add_development_dependency 'rspec', '~> 3.1.0'
+  gem.add_development_dependency 'rspec-its', '~> 1.0'
 end

@@ -5,5 +5,5 @@ describe Coercer::String, '.to_symbol' do
 
   let(:value) { 'value' }
 
-  it { should be(:value) }
+  it { is_expected.to be(:value) }
 end

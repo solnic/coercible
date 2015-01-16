@@ -8,7 +8,7 @@ describe Coercer::String, '.to_date' do
   context 'with a valid date string' do
     let(:string) { 'July, 22th, 2011' }
 
-    it { should be_instance_of(Date) }
+    it { is_expected.to be_instance_of(Date) }
 
     its(:year)  { should == 2011 }
     its(:month) { should == 7    }

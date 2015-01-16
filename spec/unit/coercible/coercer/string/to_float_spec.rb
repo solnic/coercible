@@ -36,9 +36,9 @@ describe Coercer::String, '.to_float' do
     context "with #{value.inspect}" do
       let(:string) { value }
 
-      it { should be_instance_of(Float) }
+      it { is_expected.to be_instance_of(Float) }
 
-      it { should eql(expected) }
+      it { is_expected.to eql(expected) }
     end
   end
 

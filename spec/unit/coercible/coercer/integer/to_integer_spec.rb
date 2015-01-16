@@ -5,5 +5,5 @@ describe Coercer::Integer, '.to_integer' do
 
   let(:value) { 1 }
 
-  it { should be(value) }
+  it { is_expected.to be(value) }
 end

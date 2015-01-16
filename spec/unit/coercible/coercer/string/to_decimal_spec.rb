@@ -33,9 +33,9 @@ describe Coercer::String, '.to_decimal' do
     context "with #{value.inspect}" do
       let(:string) { value }
 
-      it { should be_instance_of(BigDecimal) }
+      it { is_expected.to be_instance_of(BigDecimal) }
 
-      it { should eql(expected) }
+      it { is_expected.to eql(expected) }
     end
   end
 

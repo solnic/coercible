@@ -6,7 +6,7 @@ describe Coercer::Decimal, '.to_integer' do
   let(:object)      { described_class.new   }
   let(:big_decimal) { BigDecimal('1.0') }
 
-  it { should be_kind_of(Integer) }
+  it { is_expected.to be_kind_of(Integer) }
 
-  it { should eql(1) }
+  it { is_expected.to eql(1) }
 end

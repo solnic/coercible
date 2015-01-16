@@ -10,29 +10,29 @@ describe Coercer::Hash, '.to_datetime' do
     let(:hash)     { {}                     }
 
     before do
-      Time.stub!(:now).and_return(time_now)  # freeze time
+      allow(Time).to receive(:now).and_return(time_now)  # freeze time
     end
 
-    it { should be_instance_of(DateTime) }
+    it { is_expected.to be_instance_of(DateTime) }
 
     it 'uses the Time now to populate the segments' do
-      should eql(DateTime.new(2011, 1, 1))
+      is_expected.to eql(DateTime.new(2011, 1, 1))
     end
   end
 
   context 'when time segments are integers' do
     let(:hash) { { :year => 2011, :month => 1, :day => 1, :hour => 1, :min => 1, :sec => 1 } }
 
-    it { should be_instance_of(DateTime) }
+    it { is_expected.to be_instance_of(DateTime) }
 
-    it { should eql(DateTime.new(2011, 1, 1, 1, 1, 1)) }
+    it { is_expected.to eql(DateTime.new(2011, 1, 1, 1, 1, 1)) }
   end
 
   context 'when time segments are strings' do
     let(:hash) { { :year => '2011', :month => '1', :day => '1', :hour => '1', :min => '1', :sec => '1' } }
 
-    it { should be_instance_of(DateTime) }
+    it { is_expected.to be_instance_of(DateTime) }
 
-    it { should eql(DateTime.new(2011, 1, 1, 1, 1, 1)) }
+    it { is_expected.to eql(DateTime.new(2011, 1, 1, 1, 1, 1)) }
   end
 end

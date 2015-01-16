@@ -5,5 +5,5 @@ describe Coercer::Object, '#inspect' do
 
   let(:object) { described_class.new }
 
-  it { should == '#<Coercible::Coercer::Object primitive=Object>'}
+  it { is_expected.to eq('#<Coercible::Coercer::Object primitive=Object>')}
 end

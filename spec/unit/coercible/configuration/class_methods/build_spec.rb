@@ -5,11 +5,11 @@ describe Configuration, '.build' do
 
   let(:keys) { [ :foo, :bar ] }
 
-  it { should be_instance_of(described_class) }
+  it { is_expected.to be_instance_of(described_class) }
 
-  it { should respond_to(:foo) }
-  it { should respond_to(:foo=) }
+  it { is_expected.to respond_to(:foo) }
+  it { is_expected.to respond_to(:foo=) }
 
-  it { should respond_to(:bar) }
-  it { should respond_to(:bar=) }
+  it { is_expected.to respond_to(:bar) }
+  it { is_expected.to respond_to(:bar=) }
 end

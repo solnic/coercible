@@ -6,7 +6,7 @@ describe Coercer::FalseClass, '.to_string' do
   let(:object)      { described_class.new }
   let(:false_class) { false           }
 
-  it { should be_instance_of(String) }
+  it { is_expected.to be_instance_of(String) }
 
-  it { should eql('false') }
+  it { is_expected.to eql('false') }
 end

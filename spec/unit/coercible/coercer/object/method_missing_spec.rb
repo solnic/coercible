@@ -9,7 +9,7 @@ describe Coercer::Object, '#method_missing' do
   context "when method matches coercion method regexp" do
     let(:method_name) { :to_whatever }
 
-    it { should be(value) }
+    it { is_expected.to be(value) }
   end
 
   context "when method doesn't match coercion method regexp" do

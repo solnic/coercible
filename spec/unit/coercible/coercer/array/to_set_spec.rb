@@ -6,7 +6,7 @@ describe Coercer::Array, '#to_set' do
   let(:object) { described_class.new }
   let(:array)  { [ 'a', 1, 'b', 2, 'b', 1, 'a', 2 ] }
 
-  it { should be_instance_of(Set) }
+  it { is_expected.to be_instance_of(Set) }
 
-  it { should eql(Set[ 'a', 1, 'b', 2 ]) }
+  it { is_expected.to eql(Set[ 'a', 1, 'b', 2 ]) }
 end

@@ -9,22 +9,22 @@ describe Coercer::DateTime, '.to_time' do
   context 'when DateTime does not support #to_time' do
     if RUBY_VERSION < '1.9'
       before do
-        date_time.should_not respond_to(:to_time)
+        expect(date_time).not_to respond_to(:to_time)
       end
     end
 
-    it { should be_instance_of(Time) }
+    it { is_expected.to be_instance_of(Time) }
 
-    it { should eql(Time.local(2011, 1, 1)) }
+    it { is_expected.to eql(Time.local(2011, 1, 1)) }
   end
 
   context 'when DateTime supports #to_time' do
     let(:time) { Time.local(2011, 1, 1) }
 
     before do
-      date_time.stub!(:to_time).and_return(time)
+      allow(date_time).to receive(:to_time).and_return(time)
     end
 
-    it { should equal(time) }
+    it { is_expected.to equal(time) }
   end
 end

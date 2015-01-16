@@ -5,5 +5,5 @@ describe Coercer::Float, '.to_float' do
 
   let(:value) { 1.0 }
 
-  it { should be(value) }
+  it { is_expected.to be(value) }
 end

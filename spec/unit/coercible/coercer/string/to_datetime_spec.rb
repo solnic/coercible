@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 shared_examples_for 'a correct datetime object' do
-  it { should be_instance_of(DateTime) }
+  it { is_expected.to be_instance_of(DateTime) }
 
   its(:year)  { should == year  }
   its(:month) { should == month }

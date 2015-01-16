@@ -8,25 +8,25 @@ describe Coercer::String, '.to_constant' do
   context 'with a non-namespaced name' do
     let(:string) { 'String' }
 
-    it { should be(String) }
+    it { is_expected.to be(String) }
   end
 
   context 'with a non-namespaced qualified name' do
     let(:string) { '::String' }
 
-    it { should be(String) }
+    it { is_expected.to be(String) }
   end
 
   context 'with a namespaced name' do
     let(:string) { 'Coercible::Coercer::String' }
 
-    it { should be(Coercer::String) }
+    it { is_expected.to be(Coercer::String) }
   end
 
   context 'with a namespaced qualified name' do
     let(:string) { '::Coercible::Coercer::String' }
 
-    it { should be(Coercer::String) }
+    it { is_expected.to be(Coercer::String) }
   end
 
   context 'with a name outside of the namespace' do

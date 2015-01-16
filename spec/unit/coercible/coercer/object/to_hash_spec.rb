@@ -4,16 +4,16 @@ describe Coercer::Object, '.to_hash' do
   subject { object.to_hash(value) }
 
   let(:object) { described_class.new }
-  let(:value)  { stub('value')   }
+  let(:value)  { double('value')   }
 
   context 'when the value responds to #to_hash' do
-    let(:coerced) { stub('coerced') }
+    let(:coerced) { double('coerced') }
 
     before do
-      value.should_receive(:to_hash).with().and_return(coerced)
+      expect(value).to receive(:to_hash).and_return(coerced)
     end
 
-    it { should be(coerced) }
+    it { is_expected.to be(coerced) }
   end
 
   context 'when the value does not respond to #to_hash' do

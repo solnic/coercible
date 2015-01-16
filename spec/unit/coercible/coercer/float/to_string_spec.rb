@@ -6,7 +6,7 @@ describe Coercer::Float, '.to_string' do
   let(:object) { described_class.new }
   let(:float)  { 1.0             }
 
-  it { should be_instance_of(String) }
+  it { is_expected.to be_instance_of(String) }
 
-  it { should eql('1.0') }
+  it { is_expected.to eql('1.0') }
 end

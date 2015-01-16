@@ -8,5 +8,5 @@ describe Coercer::Numeric, '.to_string' do
 
   let(:coerced_value) { RUBY_VERSION < '1.9' ? '1' : '1/1' }
 
-  it { should eql(coerced_value) }
+  it { is_expected.to eql(coerced_value) }
 end

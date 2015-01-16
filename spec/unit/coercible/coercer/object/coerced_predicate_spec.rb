@@ -6,5 +6,5 @@ describe Coercer::Object, '#coerced?' do
   let(:object) { described_class.new }
   let(:value)  { 'something' }
 
-  it { should be(true) }
+  it { is_expected.to be(true) }
 end

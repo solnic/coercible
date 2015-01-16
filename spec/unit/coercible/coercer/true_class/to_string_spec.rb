@@ -6,7 +6,7 @@ describe Coercer::TrueClass, '.to_string' do
   let(:object)     { described_class.new }
   let(:true_class) { true            }
 
-  it { should be_instance_of(String) }
+  it { is_expected.to be_instance_of(String) }
 
-  it { should eql('true') }
+  it { is_expected.to eql('true') }
 end
