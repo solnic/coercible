@@ -122,6 +122,35 @@ module Coercible
         coerce_with_method(value, :to_int, __method__)
       end
 
+      # Create a Symbol from the Object if possible
+      #
+      # @example with a coercible object
+      #
+      #   Foo = Class.new do
+      #     def to_sym
+      #       :foo
+      #     end
+      #   end
+      #
+      #   value = Foo.new
+      #
+      #   coercer[Object].to_symbol(value)  # => :foo
+      #
+      # @example with an object that is not coercible
+      #   coercer[Object].to_symbol(value)  # => value
+      #
+      # @param [#to_sym, Object] value
+      #
+      # @return [Symbol]
+      #   returns a Symbol when the object can be coerced
+      # @return [Object]
+      #   returns the value when the object cannot be coerced
+      #
+      # @api public
+      def to_symbol(value)
+        coerce_with_method(value, :to_sym, __method__)
+      end
+
       # Return if the value was successfuly coerced
       #
       # @example when coercion was successful
