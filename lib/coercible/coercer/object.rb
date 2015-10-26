@@ -162,6 +162,10 @@ module Coercible
       # @api private
       def method_missing(method, *args)
         if method.to_s =~ COERCION_METHOD_REGEXP && args.size == 1
+          self.class.send(:define_method, method) do |value|
+            value
+          end
+
           args.first
         else
           super
