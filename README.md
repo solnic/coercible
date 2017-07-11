@@ -65,6 +65,12 @@ coercer[String].to_boolean('nope') # => false
 Note that at the moment only Integer and String are configurable. More configurable
 coercers will be added later whenever we find good usecases.
 
+### Reduce exception overhead using cached errors
+
+As identified in <https://github.com/solnic/coercible/issues/16> and <https://github.com/jruby/jruby/issues/4540>, coercible's use of errors to signal unsupported coercions has a measurable impact on performance, especially when using JRuby.
+
+As a workaround for this, whenever the environment variable `COERCIBLE_CACHE_UNSUPPORTED_COERCION_ERROR` is set to `1`, coercible will reuse a cached error, rather than raising a new error every time. This improves the performance, at the cost of a useless backtrace --- all `UnsupportedCoercion` errors will share the same dummy backtrace.
+
 ## Contributing
 
 1. Fork it
