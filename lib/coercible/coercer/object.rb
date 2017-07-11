@@ -139,6 +139,19 @@ module Coercible
 
       private
 
+      def self.cache_unsupported_coercion_error
+        begin
+          raise(
+            UnsupportedCoercion,
+            "Cached UnsupportedCoercion. Disable cache with " \
+            "ENV['COERCIBLE_CACHE_UNSUPPORTED_COERCION_ERROR'] = nil to see real backtrace and error message.")
+        rescue UnsupportedCoercion => cached_exception
+          cached_exception
+        end
+      end
+
+      CACHED_UNSUPPORTED_COERCION_ERROR = cache_unsupported_coercion_error
+
       # Raise an unsupported coercion error
       #
       # @raises [UnsupportedCoercion]
@@ -147,10 +160,14 @@ module Coercible
       #
       # @api private
       def raise_unsupported_coercion(value, method)
-        raise(
-          UnsupportedCoercion,
-          "#{self.class}##{method} doesn't know how to coerce #{value.inspect}"
-        )
+        if ENV['COERCIBLE_CACHE_UNSUPPORTED_COERCION_ERROR'] == '1'
+          raise CACHED_UNSUPPORTED_COERCION_ERROR
+        else
+          raise(
+            UnsupportedCoercion,
+            "#{self.class}##{method} doesn't know how to coerce #{value.inspect}"
+          )
+        end
       end
 
       # Passthrough given value
