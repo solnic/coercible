@@ -79,7 +79,7 @@ module Coercible
       #
       # @api public
       def to_hash(value)
-        coerce_with_method(value, :to_hash, __method__)
+        coerce_with_method(value, :to_unsafe_hash, __method__)
       end
 
       # Create a String from the Object if possible
