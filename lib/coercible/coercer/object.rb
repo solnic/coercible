@@ -122,7 +122,7 @@ module Coercible
         coerce_with_method(value, :to_int, __method__)
       end
 
-      # Return if the value was successfuly coerced
+      # Return if the value was successfully coerced
       #
       # @example when coercion was successful
       #   coercer[String].coerced?(1) # => true
